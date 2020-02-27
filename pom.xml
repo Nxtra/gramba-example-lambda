@@ -9,6 +9,11 @@
     <groupId>be.cloudway</groupId>
     <version>0.0.1</version>
 
+    <properties>
+        <gramba.addons.version>0.0.3</gramba.addons.version>
+        <gramba.version>0.0.2</gramba.version>
+    </properties>
+
 
     <dependencies>
         <dependency>
@@ -26,26 +31,26 @@
         <dependency>
             <groupId>be.cloudway</groupId>
             <artifactId>gramba-runtime</artifactId>
-            <version>0.0.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>be.cloudway</groupId>
-            <artifactId>gramba-annotations</artifactId>
-            <version>0.0.2</version>
+            <version>${gramba.version}</version>
         </dependency>
 
         <dependency>
             <groupId>be.cloudway</groupId>
             <artifactId>gramba-runtime-dev-addons</artifactId>
-            <version>0.0.2</version>
+            <version>${gramba.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>be.cloudway</groupId>
+            <artifactId>gramba-annotations</artifactId>
+            <version>${gramba.addons.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>be.cloudway</groupId>
             <artifactId>gramba-easy-reflection</artifactId>
-            <version>0.0.2</version>
+            <version>${gramba.addons.version}</version>
             <type>maven-plugin</type>
         </dependency>
 
@@ -111,7 +116,7 @@
             <plugin>
                 <groupId>be.cloudway</groupId>
                 <artifactId>gramba-easy-reflection</artifactId>
-                <version>0.0.2-SNAPSHOT</version>
+                <version>${gramba.addons.version}</version>
                 <configuration>
                     <configurationPackages>
                         <configurationPackage>
@@ -132,6 +137,7 @@
             <plugin>
                 <groupId>be.cloudway</groupId>
                 <artifactId>gramba-native-image</artifactId>
+                <version>${gramba.addons.version}</version>
                 <configuration>
                     <jarName>${artifactId}-${version}</jarName>
                     <skipBuild>
