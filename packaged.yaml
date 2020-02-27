@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'sam-app Sample SAM Template for sam-app
+
+  '
+Globals:
+  Function:
+    MemorySize: 512
+    Timeout: 20
+Outputs:
+  HelloWorldApi:
+    Description: API Gateway endpoint URL for Prod stage for Hello World function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/
+Resources:
+  GetOrderFunction:
+    Properties:
+      CodeUri: s3://mommemi-deploy-bucket/0cb9dd02d53f3d33ab88dba4a5bcbf74
+      Events:
+        GetOrder:
+          Properties:
+            Method: get
+            Path: /test/{id}
+          Type: Api
+      Handler: be.cloudway.gramba.test.lambda.Handler::handleRequest
+      Layers:
+      - arn:aws:lambda:eu-west-1:129820587654:layer:experimental-gramba-runtime:1
+      Runtime: provided
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

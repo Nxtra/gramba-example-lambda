@@ -9,6 +9,7 @@
     <groupId>be.cloudway</groupId>
     <version>0.0.1</version>
 
+
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -25,26 +26,26 @@
         <dependency>
             <groupId>be.cloudway</groupId>
             <artifactId>gramba-runtime</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
         </dependency>
 
         <dependency>
             <groupId>be.cloudway</groupId>
             <artifactId>gramba-annotations</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
         </dependency>
 
         <dependency>
             <groupId>be.cloudway</groupId>
             <artifactId>gramba-runtime-dev-addons</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>be.cloudway</groupId>
             <artifactId>gramba-easy-reflection</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
             <type>maven-plugin</type>
         </dependency>
 
@@ -110,6 +111,7 @@
             <plugin>
                 <groupId>be.cloudway</groupId>
                 <artifactId>gramba-easy-reflection</artifactId>
+                <version>0.0.2-SNAPSHOT</version>
                 <configuration>
                     <configurationPackages>
                         <configurationPackage>

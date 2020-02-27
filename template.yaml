@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    sam-app
+    Sample SAM Template for sam-app
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+    Function:
+        Timeout: 20
+        MemorySize: 512
+
+Resources:
+  GetOrderFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: target/function.zip
+      Handler: be.cloudway.gramba.test.lambda.Handler::handleRequest
+      Runtime: provided
+      Layers:
+        - arn:aws:lambda:eu-west-1:129820587654:layer:experimental-gramba-runtime:1
+      Events:
+        GetOrder:
+          Type: Api
+          Properties:
+            Path: /test/{id}
+            Method: get
+
+Outputs:
+  HelloWorldApi:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/test/1"

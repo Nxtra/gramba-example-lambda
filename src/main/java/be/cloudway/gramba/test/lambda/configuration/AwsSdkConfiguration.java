@@ -36,8 +36,7 @@ public class AwsSdkConfiguration implements ReflectionConfigurationInterface, Pr
     }
 
     @Override
-    public List<List<String>> proxyConfiguration() {
-        List<List<String>> outerList = new ArrayList<>();
+    public List<List<String>> proxyConfiguration(List<List<String>> outerList) {
         List<String> innerList = new ArrayList<>();
 
         innerList.add("org.apache.http.conn.HttpClientConnectionManager");

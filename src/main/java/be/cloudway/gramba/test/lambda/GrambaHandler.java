@@ -1,15 +1,12 @@
 package be.cloudway.gramba.test.lambda;
 
+import be.cloudway.gramba.runtime.dev.addons.helpers.TestingRunner;
 import be.cloudway.gramba.runtime.handler.GrambaLambdaHandler;
 import be.cloudway.gramba.runtime.GrambaRuntime;
 import be.cloudway.gramba.runtime.model.ApiResponse;
 import be.cloudway.gramba.runtime.aws.runtime.implementation.ContextImpl;
-import be.cloudway.gramba.runtime.eventrunner.RunOnceEventRunner;
 import be.cloudway.gramba.runtime.helpers.JacksonHelper;
-import be.cloudway.grambda.runtime.dev.addons.commands.CommandHandler;
-import be.cloudway.grambda.runtime.dev.addons.commands.FileLoader;
-import be.cloudway.grambda.runtime.dev.addons.model.GrambaSettings;
-import be.cloudway.grambda.runtime.dev.addons.strategy.MockAwsApiStrategy;
+
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 
@@ -32,18 +29,7 @@ public class GrambaHandler implements GrambaLambdaHandler<APIGatewayProxyRespons
     }
 
     public static void main (String... args) {
-        if (args.length > 0) {
-            GrambaSettings settings = new CommandHandler().validateArgs(args);
-            if (settings.isTestMode()) {
-                FileLoader fileLoader = new FileLoader();
-                String testFile = fileLoader.loadFileAsString(settings.getPathToMockJson());
-
-                MockAwsApiStrategy mock = new MockAwsApiStrategy(testFile);
-                new GrambaRuntime(new RunOnceEventRunner(new GrambaHandler(), mock)).runEventRunner();
-
-                return;
-            }
-        }
+        if (TestingRunner.doRunTests(new GrambaHandler(), args)) return;
 
         gramba.runEventRunner();
     }
