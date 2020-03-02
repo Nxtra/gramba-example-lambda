@@ -10,7 +10,7 @@
     <version>0.0.1</version>
 
     <properties>
-        <gramba.addons.version>0.0.3</gramba.addons.version>
+        <gramba.addons.version>0.0.4-SNAPSHOT</gramba.addons.version>
         <gramba.version>0.0.2</gramba.version>
     </properties>
 
@@ -76,6 +76,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
                     <source>8</source>
                     <target>8</target>
@@ -85,6 +86,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.2</version>
                 <configuration>
                     <transformers>
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
@@ -139,7 +141,7 @@
                 <artifactId>gramba-native-image</artifactId>
                 <version>${gramba.addons.version}</version>
                 <configuration>
-                    <jarName>${artifactId}-${version}</jarName>
+                    <jarName>${project.artifactId}-${project.version}</jarName>
                     <skipBuild>
                         false
                     </skipBuild>
