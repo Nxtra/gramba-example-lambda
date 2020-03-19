@@ -10,7 +10,7 @@
     <version>0.0.1</version>
 
     <properties>
-        <gramba.addons.version>0.0.4-SNAPSHOT</gramba.addons.version>
+        <gramba.addons.version>0.0.4</gramba.addons.version>
         <gramba.version>0.0.2</gramba.version>
     </properties>
 
